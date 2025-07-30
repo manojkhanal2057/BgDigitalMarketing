@@ -15,46 +15,47 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="digital.css">
+     <link rel="stylesheet" href="digital.css">
+  
 </head>
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
     <!-- Particles Background -->
     <div class="particles" id="particles"></div>
     
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#" data-aos="fade-down" data-aos-delay="100">
-                <span class="text-primary">NEXUS</span> DIGITAL
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item" data-aos="fade-down" data-aos-delay="200">
-                        <a class="nav-link active text-dark" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item" data-aos="fade-down" data-aos-delay="300">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item" data-aos="fade-down" data-aos-delay="400">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item" data-aos="fade-down" data-aos-delay="500">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item" data-aos="fade-down" data-aos-delay="600">
-                        <a class="nav-link" href="#testimonials">Testimonials</a>
-                    </li>
-                    <li class="nav-item" data-aos="fade-down" data-aos-delay="700">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-                <a href="#contact" class="btn btn-primary ms-lg-3 pulse" data-aos="fade-down" data-aos-delay="800">Get Started</a>
-            </div>
-        </div>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand"  href="#" data-aos="fade-down">
+        <span>NEXUS</span> DIGITAL
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item" data-aos="fade-down" data-aos-delay="100">
+            <a class="nav-link active"  href="#home">Home</a>
+          </li>
+          <li class="nav-item" data-aos="fade-down" data-aos-delay="200">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item" data-aos="fade-down" data-aos-delay="300">
+            <a class="nav-link" class href="#about">About</a>
+          </li>
+          <li class="nav-item" data-aos="fade-down" data-aos-delay="400">
+            <a class="nav-link" href="#portfolio">Portfolio</a>
+          </li>
+          <li class="nav-item" data-aos="fade-down" data-aos-delay="500">
+            <a class="nav-link" href="#testimonials">Testimonials</a>
+          </li>
+          <li class="nav-item" data-aos="fade-down" data-aos-delay="600">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+        <a href="#contact" class="btn btn-primary ms-lg-3 pulse" data-aos="fade-down" data-aos-delay="700">Get Started</a>
+      </div>
+    </div>
+  </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
@@ -74,7 +75,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block animate__animated animate__fadeIn animate__delay-1s" data-aos="fade-left" data-aos-delay="500">
-                    <img src="https://img.freepik.com/free-vector/digital-marketing-team-with-laptops-light-bulb_74855-5552.jpg" alt="Digital Marketing" class="img-fluid floating">
+                    <img src="/1726.jpg"  alt="Digital Marketing" class="img-fluid floating " style="border-radius: 20px;">
                 </div>
             </div>
         </div>
@@ -555,6 +556,130 @@
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Custom JS -->
-   <script src="digital.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: false,
+            mirror: true
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        
+        // Animate stats counter
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                const count = parseInt(stat.textContent);
+                const increment = target / speed;
+                
+                if (count < target) {
+                    stat.textContent = Math.ceil(count + increment);
+                    setTimeout(animateStats, 1);
+                } else {
+                    stat.textContent = target;
+                }
+            });
+        }
+        
+        // Initialize stats animation when scrolled to stats section
+        const statsSection = document.querySelector('.stats-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {threshold: 0.5});
+        
+        observer.observe(statsSection);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize Typed.js for hero section
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.querySelector('.typed-text')) {
+                new Typed('.typed-text', {
+                    strings: ["Digital Marketing", "SEO", "Social Media", "PPC", "Content Strategy"],
+                    typeSpeed: 50,
+                    backSpeed: 30,
+                    loop: true
+                });
+            }
+            
+            // Create particles
+            const particlesContainer = document.getElementById('particles');
+            if (particlesContainer) {
+                const particleCount = 30;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    // Random properties
+                    const size = Math.random() * 10 + 5;
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100;
+                    const delay = Math.random() * 10;
+                    const duration = Math.random() * 20 + 10;
+                    const opacity = Math.random() * 0.5 + 0.1;
+                    
+                    // Apply styles
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${posX}%`;
+                    particle.style.top = `${posY}%`;
+                    particle.style.animationDelay = `${delay}s`;
+                    particle.style.animationDuration = `${duration}s`;
+                    particle.style.opacity = opacity;
+                    
+                    particlesContainer.appendChild(particle);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
